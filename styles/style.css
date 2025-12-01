@@ -63,7 +63,19 @@ body {
   cursor: pointer;
 }
 
-.twokie-block h1 {
+.twokie-block .twokie-zag-1 {
+  width: 77%;
+  font-family: var(--montserrat);
+  font-size: 4vw;
+  color: #2D2D2D;
+  font-weight: 500;
+  letter-spacing: -4%;
+  line-height: 99%;
+  margin-top: 0;
+  margin-bottom: 0vw;
+}
+
+.twokie-block .twokie-zag-2 {
   width: 77%;
   font-family: var(--montserrat);
   font-size: 4vw;
@@ -75,7 +87,19 @@ body {
   margin-bottom: 4vw;
 }
 
-.twokie-block p {
+.twokie-block .twokie-opis-1 {
+  width: 48vw;
+  font-family: var(--montserrat);
+  font-size: 1.25vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  padding-left: 0px;
+  color: #2D2D2D;
+  margin-bottom: 0vw;
+}
+
+.twokie-block .twokie-opis-2 {
   width: 48vw;
   font-family: var(--montserrat);
   font-size: 1.25vw;
@@ -85,14 +109,17 @@ body {
   padding-left: 0px;
   color: #2D2D2D;
   margin-bottom: 3.813vw;
+  margin-top: 0vw;
 }
 
-.hero-content .twokie-block p {
+.hero-content .twokie-block .twokie-opis-1,
+.hero-content .twokie-block .twokie-opis-2 {
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
 }
 
-.hero-content .twokie-block p.is-visible {
+.hero-content .twokie-block .twokie-opis-1.is-visible,
+.hero-content .twokie-block .twokie-opis-2.is-visible {
   opacity: 1;
 }
 
@@ -169,10 +196,10 @@ body {
 }
 
 .icon-part {
-  width: 1.25vw;
+  display: flex;
   background: #2D2D2D;
   border-radius: 50%;
-  padding: 0.2vw 0.4vw 0.2vw 0.4vw;
+  padding: 0.2vw 0.5vw;
   margin-right: 0.2vw;
 }
 
@@ -1003,20 +1030,20 @@ display: block;
 .right-static .logo-block {
   margin-left: 3vw;
   margin-top: 1.813vw; 
-  margin-bottom: 10.831vw; 
+  margin-bottom: 18.081vw; 
 }
 
 .right-static .logo-block img {
-  width: 19vw;
-  height: 9vw;
+  width: 18.813vw;
+  height: auto;
 }
 
 .price-mot-3 {
   font-family: var(--montserrat);
+  font-weight: 500;
   font-size: 1.125vw;
-  line-height: 113.9%;
+  line-height: 114.2%;
   letter-spacing: -4%;
-  font-weight: 400;
   display: flex; /* делаем flex-контейнер для выравнивания текста и стрелки */
   align-items: center; /* центрируем элементы по вертикали */
   justify-content: space-between; /* распределяем текст и стрелку по краям */
@@ -1026,7 +1053,7 @@ display: block;
   border-radius: 2vw; /* скругление углов */
   text-decoration: none; /* убираем подчёркивание ссылки */
   color: #2D2D2D; /* цвет текста */
-  width: 19vw; /* занимает всю доступную ширину */
+  width: 18.625vw; /* занимает всю доступную ширину */
   box-sizing: border-box; /* включаем отступы в ширину элемента */
   cursor: pointer; /* курсор "рука" при наведении */
   margin-left: 3vw;
@@ -1036,7 +1063,7 @@ display: block;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:1vw;            
+  padding:0.75vw;            
   box-sizing:border-box;    
   border:1px solid #2D2D2D;
   border-radius:2vw;
@@ -1044,43 +1071,54 @@ display: block;
 }
 
 .icon-wrap-2 .arrow-icon-2 {
-  width: 1vw;
-  height: 1vw;
+  width: 0.796vw;
+  height: 0.796vw;
 }
 
 .contact-block {
   font-family: var(--krona);
   text-align:left;
-  margin-top: 1.675vw;
+  margin-top: 0.625vw;
   margin-left: 3vw;
 }
 
+.social-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75vw;
+}
+
 .social-btn {
-  line-height: 113.9%;
-  text-decoration: none;
-  font-family: var(--krona);
-  color: #FFFFFF;
-  padding: 1vw 2vw;
-  background: #2D2D2D;
-  border-radius: 1.2vw;
-  font-size: 0.75vw;
   cursor: pointer;
-  margin-right: 0.563vw;
-  transition: 
-    color 0.3s ease,
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  margin-right: 0;
+  display: flex;
+}
+
+.wa-button {
+  width: 2.125vw;
 }
 
 .social-btn-1-2 {
-  line-height: 113.9%;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+}
+
+.tg-button {
+  width: 2.125vw;
+}
+
+.social-btn-1-3 {
+  line-height: 114.2%;
+  letter-spacing: -3%;
+  font-weight: medium;
   text-decoration: none;
-  font-family: var(--krona);
+  font-family: var(--montserrat);
   color: #FFFFFF;
-  padding: 1vw 2.1vw;
+  padding: 0.65vw 3.063vw;
   background: #2D2D2D;
-  border-radius: 1.2vw;
-  font-size: 0.75vw;
+  border-radius: 1vw;
+  font-size: 0.875vw;
   cursor: pointer;
   margin: 0;
   transition: 
@@ -1089,12 +1127,7 @@ display: block;
     transform 0.2s ease;
 }
 
-.social-btn:hover {
-  background-color: #FFFFFF;
-  color: #2D2D2D;
-}
-
-.social-btn-1-2:hover {
+.social-btn-1-3:hover {
   background-color: #FFFFFF;
   color: #2D2D2D;
 }
@@ -1254,11 +1287,11 @@ display: block;
 }
 
 
-@media (max-width: 743px) {
+@media (max-width: 440px) {
   .right-static {
     position: absolute;
     width: 100%;
-    height: 20vw;
+    height: 55vw;
   }
 
 .vertical-links {
@@ -1270,9 +1303,10 @@ display: block;
   display: flex;
   align-items: center;
   justify-content: flex-end; 
-  gap: 40vw; 
+  gap: 28vw; 
   padding-top: 13px; 
-  padding-right: 19px;
+  padding-right: 5.5vw;
+  margin-left: 5.227vw;
 }
 
 .nav-link {
@@ -1293,19 +1327,24 @@ display: block;
     font-size: 14px;
     line-height: 113%;
   display: inline-flex;
-  align-items: center;
-  padding: 0.438vw 0.813vw; 
+  align-items: center; 
   border: 0px solid #2D2D2D; 
-  border-radius: 1.468vw; 
   background-color: #D4D5DE; 
   color: #2D2D2D; 
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.right-static .logo-block {
+  margin-left: 14.318vw;
+  margin-top: 16.364vw; 
+  margin-bottom: 0vw; 
 }
 
 .right-static .logo-block img {
-  width: 40.511vw;
-  height: 8.481vw;
+  width: 68.409vw;
+  height: auto;
 }
 
 .contact-block {
@@ -1317,8 +1356,588 @@ display: block;
 }
 
 .left-scrollable {
-  margin-top: 19vw;
+  margin-top: 71.432vw;
   width: 100%;
-  padding-right: 0.813vw;
+  padding-right: 3.409vw;
+  height: 100%;
+  overflow-y: auto;
+  padding-left: 3.409vw;
+  padding-top: 0.875vw;
+  padding-bottom: 1.438vw;
+  box-sizing: border-box;
+  overflow-y: hidden;
+}
+
+.knopki {
+  opacity: 0;
+}
+
+.hero-content {
+  height: 153.636vw;
+  border-radius: 2.273vw;
+}
+
+.twokie-block {
+  padding: 0vw 5vw;
+  overflow: hidden;
+}
+
+.twokie-block .twokie-zag-1 {
+  width: 77%;
+  font-family: var(--montserrat);
+  font-size: 7.273vw;
+  color: #2D2D2D;
+  font-weight: 500;
+  letter-spacing: -4%;
+  line-height: 99%;
+  margin-top: 5.682vw;
+  margin-bottom: 0vw;
+}
+
+.twokie-block .twokie-zag-2 {
+  width: 84vw;
+  font-family: var(--montserrat);
+  font-size: 7.273vw;
+  color: #2D2D2D;
+  font-weight: 500;
+  letter-spacing: -4%;
+  line-height: 99%;
+  margin-top: 0;
+  margin-bottom: 8vw;
+}
+
+.twokie-block .twokie-opis-1 {
+  width: 71vw;
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  padding-left: 0px;
+  color: #2D2D2D;
+  margin-bottom: 3.813vw;
+  margin-top: 0vw;
+}
+
+.twokie-block .twokie-opis-2 {
+  width: 80vw;
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  padding-left: 0px;
+  color: #2D2D2D;
+  margin-bottom: 15.227vw;
+}
+
+.hero-content .twokie-block .twokie-opis-1,
+.hero-content .twokie-block .twokie-opis-2 {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-content .twokie-block p.is-visible {
+  opacity: 1;
+}
+
+.categories-grid {
+  margin-bottom: 2.375vw;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  width: 77vw;
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  margin-bottom: 3.5vw;
+  color: #2D2D2D;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.category span {
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  color: #979797;
+  display: inline-block;   
+  width: 1.25vw;             
+  text-align: left;        
+  white-space: nowrap;
+}
+
+.category {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.category.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.serv-header {
+  width: 85.6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0; 
+  margin-top: 5.682vw;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.serv-header.is-visible {
+  opacity: 1;
+}
+
+.serv-zagolovok {
+  display: flex;
+  width: 70.227vw;
+  height: 20vw;
+    align-items: center; /* Выравнивание по вертикали */
+  justify-content: space-between;
+  background-color: #E3E3E9;
+  border-radius: 2.273vw;
+}
+
+.name {
+  transform: translate(0vw, -4vw);
+  width: 15.125vw;
+  display: inline-block;
+  padding-left: 5vw;
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9px;
+  letter-spacing: -4%;
+  font-weight: 500; 
+  margin-right: 4.875vw;
+  white-space: nowrap;
+}
+
+.cases-serv {
+  transform: translate(-20vw, 5vw);
+  width: 34vw;
+  font-family: var(--montserrat);
+  font-size: 3.182vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 500;
+  color: #2D2D2D;
+  display: flex;
+  align-items: center;
+  gap: 0.625vw; /* Расстояние между ссылками */
+}
+
+.cases-serv a {
+  color: #2D2D2D;
+}
+
+.serv-kol {
+  transform: translate(-3vw, -4vw);
+  margin-left: 4.75vw;
+  padding-right: 1.135vw;
+  font-family: var(--montserrat);
+  font-size: 3.636vw; 
+  font-weight: 500;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  color: #979797; 
+}
+
+.serv-video {
+    display: flex;
+  justify-content: center; /* центрирование по горизонтали */
+  align-items: center;
+  position: relative;
+  flex-shrink: 0; 
+  width: 5vw; 
+  height: 5vw; 
+}
+
+.video-serv {
+  position: absolute;
+  width: 20vw;
+  height: 20vw;
+}
+
+.play-btn{
+width: 4.773vw;
+    height: 4.773vw;
+    position: absolute;
+    z-index: 10;
+  cursor: pointer;
+}
+
+.services-cards-wrapper {
+  display: flex; 
+  flex-direction: column;
+  gap: 3.182vw; 
+  padding: 0px; 
+  padding-top: 2.955vw;
+}
+
+.card {
+  background: #000000;
+  border-radius: 2.273vw;
+  overflow: hidden;
+  width: 93.182vw; 
+  height: 90.227vw;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.card:hover {
+  transform: translateY(px); 
+}
+
+.card-header {
+    font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 2px;
+  background-color: #2D2D2D;
+  border-radius: 10px;
+  transition: backgroundcolor 0.6s ease;
+}
+
+.card-header:hover {
+  background-color: #FFFFFF;
+}
+
+.card-header:hover .arrow-icon-2 {
+  background-color: #000000;
+}
+
+.zagolovok {
+font-size: 9.091vw;
+    font-family: var(--montserrat);
+    color: #FFFFFF;
+    line-height: 113.9%;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding-bottom: 0;
+    margin: 0;
+    margin-bottom: 1.655vw;
+}
+
+.card-title {
+  display: flex; /* делаем flex-контейнер для выравнивания текста и стрелки */
+  align-items: center; /* центрируем элементы по вертикали */
+  justify-content: space-between; /* распределяем текст и стрелку по краям */
+  width: 100%;
+  color: #FFFFFF;
+  text-decoration: none;
+    padding-top: 2.16vw;
+    padding-bottom: 2.16vw;
+    border-radius: 2.273vw;
+  font-family: var(--krona);
+  font-size: 3.182vw;
+  font-weight: 100;
+  line-height: 113.9%;
+}
+
+.btn-cont-1 {
+  height: 13vw;
+  margin-bottom: 8vw;
+}
+
+.komp-button {
+display: flex;
+    flex-wrap: wrap;
+    width: 44vw;
+}
+
+.komplect-btn {
+  line-height: 113.9%;
+  font-family: var(--krona);
+  text-decoration: none;
+  color: #2D2D2D;
+  font-weight: 500;
+  font-size: 2.727vw;
+  padding: 0.313vw 0.563vw;
+  background-color: #FFFFFF;
+  border-radius: 2vw;
+  margin-right: 0.909vw;
+  margin-bottom: 1.136vw;
+  cursor: default;
+}
+
+.tooltip {
+  font-family: var(--montserrat);
+  font-weight:medium;
+  line-height: 111%;
+  letter-spacing: -3%;
+  position: fixed;
+  background-color: #2D2D2D;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  max-width: 270px;
+  z-index: 10;
+  pointer-events: none; /* Чтобы не мешала кликам */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Видимая подсказка */
+.tooltip.show {
+  opacity: 1;
+}
+
+.card-desc {
+    width: 66vw;
+    height: 12vw;
+    vertical-align: top;
+    font-family: var(--montserrat);
+    font-size: 3.409vw;
+    color: #FFFFFF;
+    line-height: 113.9%;
+    letter-spacing: -4%;
+    font-weight: 500;
+    margin-bottom: 8vw;
+}
+
+.card-price {
+    font-family: var(--montserrat);
+    font-size: 4.091vw;
+    color: #FFFFFF;
+    line-height: 113.9%;
+    letter-spacing: -3%;
+    font-weight: 600;
+    margin-bottom: 4.632vw;
+}
+
+.card-title span {
+  background-color: #000000;
+  border-radius: 1.468vw;
+  padding: 0.25vw 0.938vw;
+  margin-left: 4.091vw;
+}
+
+.icon-wrap {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.48vw;            
+  box-sizing:border-box;    
+  background:#2D2D2D;
+  border:1px solid #FFFFFF;
+  border-radius:50%;
+  margin-right: 2.727vw;
+}
+
+.card-header:hover .icon-wrap {
+  background-color: #000000;
+}
+
+.icon-wrap .arrow-icon-2{
+  display:block;
+  width:2.273vw;               
+  height:auto;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: left;
+  height: 100%;
+    width: 100%;
+    font-family: var(--montserrat);
+  padding-left: 4.091vw;
+  font-size: 13px;
+  color: #828282;
+  line-height: 136%;
+}
+
+.price-mot {
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 400;
+  display: flex; /* делаем flex-контейнер для выравнивания текста и стрелки */
+  align-items: center; /* центрируем элементы по вертикали */
+  justify-content: space-between; /* распределяем текст и стрелку по краям */
+  padding-left: 3.864vw;
+  background: transparent; /* фон прозрачный, как на скрине */
+  border: 1px solid #FFFFFF; /* обводка кнопки */
+  border-radius: 4vw; /* скругление углов */
+  text-decoration: none; /* убираем подчёркивание ссылки */
+  color: #FFFFFF; /* цвет текста */
+  width: 85.455vw; /* занимает всю доступную ширину */
+  box-sizing: border-box; /* включаем отступы в ширину элемента */
+  cursor: pointer; /* курсор "рука" при наведении */
+  margin-bottom: 4.773vw;
+}
+
+.card-1-wrap {
+display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.56vw 1.6vw;
+    box-sizing: border-box;
+    background: #000000;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+}
+
+.arrow-icon {
+display: block;
+    width: 3.636vw;
+    height: auto;
+}
+
+.services-container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin: 0 auto; /* Центрируем контейнер */
+  display: flex;
+  flex-direction: column;
+  gap: 2.955vw; /* Отступы между карточками */
+  margin-top: 2.955vw;
+}
+
+.design {
+      position: relative;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.card-2 {
+  padding-top: 0px;
+  width: 100%;
+  height: 34.545vw;
+  background-color: #F6F6F8;
+  border-radius: 2.273vw;
+  text-align: left;
+    opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+.card-2.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zag-bl2 {
+  display: flex;
+  align-items:center;
+  justify-content: flex-end;
+}
+
+.zag-bl2 h3 {
+  width: 50vw;
+  font-family: var(--montserrat);
+  font-size: 4.545vw;
+  color: #2D2D2D;
+  font-weight: 500;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  margin-right: -3.2vw;
+}
+
+.zag-bl2 p {
+  transform: translate(-2vw, 16vw);
+  font-family: var(--montserrat);
+  font-size: 3.636vw;
+  font-weight: 500;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  color: #2D2D2D;
+  display: inline-block;   
+  width: 6vw;             
+  text-align: left;        
+  white-space: nowrap;
+  margin-right: 27.1vw;
+}
+
+.zag-bl2-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.48vw;
+    box-sizing: border-box;
+    background: #F6F6F8;
+    border: 1px solid #2D2D2D;
+    border-radius: 50%;
+    margin-right: 3vw;
+}
+
+.zag-bl2 img {
+    display: block;
+    width: 2.273vw;
+    height: auto;
+}
+
+.desc-bl2 {
+  padding-left: 4.091vw;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-top: 7vw;
+}
+
+.desc-bl2 p {
+  font-family: var(--montserrat);
+  font-size: 2.955vw;
+  color: #ADADAF;
+  line-height: 113.9%;
+  letter-spacing: -4%;
+  font-weight: 400;
+  width: 39vw;
+}
+
+.desc-bl2 span {
+  font-family: var(--montserrat);
+  font-size: 4.091vw;
+  color: #2D2D2D;
+  line-height: 113.9%;
+  letter-spacing: -3%;
+  font-weight: 600;
+  padding-top: 2.9vw;
+  display: inline-block;   
+  width: 10.5vw;             
+  text-align: right;        
+  white-space: nowrap;
+  margin-right: 33vw;
+}
+
+.card-3.is-visible {
+  display: none;
+}
+
+.card-3.is-visible {
+  display: none;
+}
+
+.des-content {
+  height: 216.4vw;
 }
 }
