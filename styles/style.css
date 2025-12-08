@@ -270,7 +270,7 @@ body {
 
 .serv-zagolovok {
   display: flex;
-  width: 66vw;
+  width: 92.31%;
   height: 5vw;
     align-items: center; /* Выравнивание по вертикали */
   justify-content: space-between;
@@ -313,7 +313,7 @@ body {
   padding-right: 1.135vw;
   font-family: var(--montserrat);
   font-size: 1.25vw; 
-  font-weight: 500;
+  font-weight: 550;
   line-height: 113.9%;
   letter-spacing: -4%;
   color: #979797; 
@@ -347,7 +347,7 @@ width: 1.195vw;
   display: flex; 
   gap: 0.688vw; 
   padding: 0px; 
-  padding-top: 0.688vw;
+  padding-top: 0.5vw;
 }
 
 .card {
@@ -383,6 +383,7 @@ width: 1.195vw;
 }
 
 .card-header:hover {
+    border-color: #E3E3E9;
   background-color: #E3E3E9;
 }
 
@@ -411,7 +412,7 @@ font-size: 2.5vw;
   text-decoration: none;
     padding-top: 0.625vw;
     padding-bottom: 0.563vw;
-    border-radius: 0.75vw;
+    border-radius: 0.625vw;
   font-family: var(--krona);
   font-size: 0.875vw;
   font-weight: 400;
@@ -436,7 +437,7 @@ display: flex;
   color: #2D2D2D;
   font-weight: 500;
   font-size: 0.75vw;
-  padding: 0.1vw 0.5vw;
+  padding: 0.2vw 0.5vw 0.15vw 0.5vw;
   background-color: #FFFFFF;
   border-radius: 2vw;
   margin-right: 0.188vw;
@@ -476,7 +477,7 @@ display: flex;
     font-size: 0.938vw;
     color: #FFFFFF;
     line-height: 113.9%;
-    letter-spacing: -4%;
+    letter-spacing: -0.03em;
     font-weight: 500;
     margin-bottom: 1vw;
 }
@@ -505,7 +506,7 @@ display: flex;
   padding:0.563vw;            
   box-sizing:border-box;    
   background:#2D2D2D;
-  border:1px solid #FFFFFF;
+  border:1px solid #E3E3E9;
   border-radius:50%;
   margin-right: 0.625vw;
 }
@@ -979,7 +980,7 @@ display: block;
   justify-content: flex-end; 
   gap: 1.25vw; 
   padding-top: 0.813vw; 
-  padding-right: 11.188vw;
+  padding-right: 1.188vw;
 }
 
 .vertical-links {
@@ -1548,7 +1549,7 @@ display: block;
 }
 
 .name {
-  transform: translate(0vw, -4vw);
+  transform:translate(0vw, -3.5vw);
   width: 15.125vw;
   display: inline-block;
   padding-left: 5vw;
@@ -1562,7 +1563,7 @@ display: block;
 }
 
 .cases-serv {
-  transform: translate(-20vw, 5vw);
+  transform:translate(-20vw, 4vw);
   width: 34vw;
   font-family: var(--montserrat);
   font-size: 3.182vw;
@@ -1580,7 +1581,7 @@ display: block;
 }
 
 .serv-kol {
-  transform: translate(-4vw, -4vw);
+  transform: translate(-4vw, -3.5vw);
   margin-left: 4.75vw;
   padding-right: 1.135vw;
   font-family: var(--montserrat);
@@ -2054,6 +2055,7 @@ padding-bottom: 10.820vw;
 }
 
 .price-mot-2 {
+  position: relative;
 font-family: var(--montserrat);
     font-size: 4.091vw;
     line-height: 113.9%;
@@ -2075,15 +2077,16 @@ font-family: var(--montserrat);
 }
 
 .icon-mot-1 {
-  transform: translateX(24.09vw);
+  position: absolute;
   display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 2.56vw 1.6vw;
+    padding: 2.79vw 1.827vw;
     box-sizing: border-box;
     border: 1px solid #2D2D2D;
     border-radius: 50%;
     z-index: 10;
+    margin-left: 84%;
 }
 
 .icon-mot-2 {
@@ -2129,7 +2132,7 @@ display: block;
 
 .footer {
   width: 100%;
-  height: 184.773vw;
+  height: 100vh;
   background-color: #000;
   color: #fff;
   display: flex;
