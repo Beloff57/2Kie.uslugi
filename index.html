@@ -294,7 +294,7 @@
              <span class="serv-kol">x14</span>
           </div>
           <div class="serv-video">
-              <img src="images/Rectangle 293.png" alt="" class="video-serv">
+              <video src="video/Моушен услуги.mp4" alt="" class="video-serv">
               <img src="images/Page-1.svg" alt="Play" class="play-btn">
           </div>
         </div>
@@ -359,7 +359,7 @@
         </section>
     </div>
     <div class="right-static">
-  <div class="nav-wrapper">
+  <div class="nav-wrapper fade-on-scroll">
     <div class="vertical-links">
       <a href="/cases" class="nav-link">Кейсы</a>
       <a href="/uslugi.html" class="nav-link">Услуги</a>
@@ -367,16 +367,16 @@
     </div>
     <a href="" class="telegram-link">tg: @studio</a>
   </div>
-    <div class="logo-block">
+    <div class="logo-block fade-on-scroll">
         <img src="images/Group 17.svg" alt="2kie Digital Agency">
     </div>
-       <a href="#" class="price-mot-3">
+       <a href="#" class="price-mot-3 fade-on-scroll">
           Обсудить проект
           <div class="icon-wrap-2">
           <img src="images/Arrow 51.svg" class="arrow-icon-2" alt="">
           </div>
       </a>
-        <div class="contact-block">
+        <div class="contact-block fade-on-scroll">
             <div class="social-buttons">
             <a href="" class="social-btn">
               <img src="images/WA-Vector.svg" alt="" class="wa-button">
@@ -429,6 +429,12 @@
     </div>
   </div>
 </footer>
+<div class="video-modal">
+  <div class="video-modal-content">
+    <span class="modal-close">&times;</span>
+    <video class="modal-video" controls></video>
+  </div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const target = document.querySelector('.page-wrapper-2');
@@ -588,14 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card-mot');
-
-  // Добавляем CSS‑переходы для плавности
-  cards.forEach(card => {
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-  });
-
   // Функция: проверяем, является ли устройство «мобильным» (ширина ≤ 440px)
   const isMobile = () => window.matchMedia('(max-width: 440px)').matches;
 
@@ -880,6 +878,69 @@ document.addEventListener('DOMContentLoaded', function() {
   );
 
   observer.observe(categories[0].parentElement); // Наблюдаем за родительским контейнером
+});
+</script>
+<script>
+const fadeBlocks = document.querySelectorAll('.fade-on-scroll');
+
+// Процент расстояния от низа страницы, в пределах которого элементы исчезают
+const fadePercent = 0.32; // например: исчезают в нижних 15% страницы
+
+window.addEventListener('scroll', () => {
+  const docHeight = document.documentElement.scrollHeight;
+
+  fadeBlocks.forEach(block => {
+    // Позиция верхней точки элемента относительно страницы
+    const elementTopOnPage = window.scrollY + block.getBoundingClientRect().top;
+
+    // Расстояние от элемента до низа страницы
+    const distanceToBottom = docHeight - elementTopOnPage;
+
+    // Порог исчезновения в пикселях
+    const fadeThreshold = docHeight * fadePercent;
+
+    // Проверяем
+    if (distanceToBottom <= fadeThreshold) {
+      block.style.opacity = '0';
+      block.style.pointerEvents = 'none';
+    } else {
+      block.style.opacity = '1';
+      block.style.pointerEvents = 'auto';
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const playBtn = document.querySelector(".play-btn");
+    const previewVideo = document.querySelector(".video-serv");
+
+    const modal = document.querySelector(".video-modal");
+    const modalVideo = document.querySelector(".modal-video");
+    const closeBtn = document.querySelector(".modal-close");
+
+    // Открытие модалки
+    playBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+
+        // копируем видео-файл в модалку
+        modalVideo.src = previewVideo.src;
+        modalVideo.play();
+    });
+
+    // Закрытие по кресту
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        modalVideo.pause();
+    });
+
+    // Закрытие по клику на затемнение
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            modalVideo.pause();
+        }
+    });
 });
 </script>
 </body>
