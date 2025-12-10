@@ -50,7 +50,12 @@
           </div>
           <div class="serv-video">
               <img src="images/Rectangle 293.png" alt="" class="video-serv">
-              <img src="images/Page-1.svg" alt="Play" class="play-btn">
+              <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video1.mp4">
+          </div>
+          <div class="modalBox">
+            <div class="modalBox-container">
+              <video width="100%" height="auto" controls loop autoplay></video>
+            </div>
           </div>
         </div>
         <div class="serv-content">
@@ -167,7 +172,12 @@
           </div>
           <div class="serv-video">
               <img src="images/Rectangle 293.png" alt="" class="video-serv">
-              <img src="images/Page-1.svg" alt="Play" class="play-btn">
+              <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video2.mp4">
+          </div>
+          <div class="modalBox">
+            <div class="modalBox-container">
+              <video width="100%" height="auto" controls loop autoplay></video>
+            </div>
           </div>
         </div>
         <div class="des-content">
@@ -294,8 +304,13 @@
              <span class="serv-kol">x14</span>
           </div>
           <div class="serv-video">
-              <video src="video/Моушен услуги.mp4" alt="" class="video-serv">
-              <img src="images/Page-1.svg" alt="Play" class="play-btn">
+              <img src="images/Rectangle 293.png" alt="" class="video-serv">
+              <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video3.mp4">
+          </div>
+          <div class="modalBox">
+            <div class="modalBox-container">
+              <video width="100%" height="auto" controls loop autoplay></video>
+            </div>
           </div>
         </div>
         <div class="motion-content">
@@ -429,12 +444,6 @@
     </div>
   </div>
 </footer>
-<div class="video-modal">
-  <div class="video-modal-content">
-    <span class="modal-close">&times;</span>
-    <video class="modal-video" controls></video>
-  </div>
-</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const target = document.querySelector('.page-wrapper-2');
@@ -910,37 +919,57 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const playBtn = document.querySelector(".play-btn");
-    const previewVideo = document.querySelector(".video-serv");
+$(document).ready(function() {
 
-    const modal = document.querySelector(".video-modal");
-    const modalVideo = document.querySelector(".modal-video");
-    const closeBtn = document.querySelector(".modal-close");
+  $('.play-btn').click(function() {
 
-    // Открытие модалки
-    playBtn.addEventListener("click", () => {
-        modal.style.display = "flex";
+    const modal = $(this).closest('.serv-video').next('.modalBox');
+    const video = modal.find('video').get(0);
+    const src = $(this).data('video');
 
-        // копируем видео-файл в модалку
-        modalVideo.src = previewVideo.src;
-        modalVideo.play();
-    });
+    video.src = src;
+    video.currentTime = 0;
+    video.play();
 
-    // Закрытие по кресту
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-        modalVideo.pause();
-    });
+    $('body').addClass('no-scroll');
 
-    // Закрытие по клику на затемнение
-    modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-            modalVideo.pause();
-        }
-    });
+    modal.removeClass('closing').addClass('show');
+  });
+
+  $(document).on('click', '.modalBox', function(e) {
+    if ($(e.target).closest('.modalBox-container').length === 0) {
+      closeModal($(this));
+    }
+  });
+
+  $(document).keydown(function(e) {
+    if (e.key === "Escape") {
+      $('.modalBox.show').each(function() { closeModal($(this)); });
+    }
+  });
+
+
+  function closeModal(modal) {
+    const video = modal.find('video').get(0);
+
+    $('body').removeClass('no-scroll');
+
+    modal.find('.fly-logo, .fly-text').css('transition', '');
+
+    modal.addClass('closing').removeClass('show');
+
+    // Дождаться конца анимации (0.35s)
+    setTimeout(() => {
+      video.pause();
+      video.src = "";
+      modal.removeClass('closing');
+    }, 350);
+  }
+
 });
 </script>
 </body>
