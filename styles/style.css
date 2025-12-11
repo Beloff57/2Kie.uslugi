@@ -13,6 +13,14 @@ body {
     overflow-x: hidden;
 }
 
+.body-lock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll; /* скроллбар остаётся на месте */
+  left: 0;
+  right: 0;
+}
+
 .page-wrapper {
   display: flex;
   height: 100%;
@@ -25,13 +33,11 @@ body {
 .left-scrollable {
   width: 73%; 
   height: 100%;
-  overflow-y: auto;
   padding-left: 0.813vw;
   padding-top: 0.875vw;
   padding-bottom: 1.438vw;
   padding-right: 0px;
-  box-sizing: border-box;
-  overflow-y: hidden;
+  box-sizing: border-box;;
 }
 
 .hero-content {
@@ -228,7 +234,7 @@ body {
   position: absolute;
   top: 0;
   right: 0; /* Начинаем с правого края */
-  width: 10vw; /* Двойная ширина для плавного перехода */
+  width: 11vw; /* Двойная ширина для плавного перехода */
   height: 100%;
   background: linear-gradient(
     to left, /* Движение справа налево */
@@ -292,7 +298,8 @@ body {
 }
 
 .cases-serv {
-  width: 190px;
+  margin-top: 0.3vw;
+  width: 11.9vw;
   font-family: var(--montserrat);
   font-size: 0.875vw;
   line-height: 114.2%;
@@ -323,7 +330,7 @@ body {
 
   transform: scaleX(0);
   transform-origin: left; /* анимация слева направо */
-  transition: transform 0.3s ease;
+ transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
 }
 
 .cases-serv a:hover::after {
@@ -363,6 +370,51 @@ width: 1.195vw;
     position: absolute;
     z-index: 1000;
   cursor: pointer;
+}
+
+.video-hint {
+  position: absolute;
+  top: -1vw;
+  right: -1vw;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 0.6vw 1vw;
+  border-radius: 0.5vw;
+  font-size: 0.9vw;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(11vw, 0vw) scale(0.96);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s linear 0.35s;
+  z-index: 9999;
+}
+
+/* Показ */
+.video-hint.show {
+  opacity: 1;
+  transform: translate(11vw, 0vw) scale(1);
+  visibility: visible;
+  transition-delay: 0s; 
+}
+
+.video-hint.hide {
+  opacity: 0;
+  transform: translate(11vw, 0vw) scale(0.96);
+
+}
+
+.video-hint.pulse {
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: translate(11vw, 0vw) scale(1); }
+  50%  { transform: translate(11vw, 0vw) scale(1.05); }
+  100% { transform: translate(11vw, 0vw) scale(1); }
 }
 
 .modalBox {
@@ -410,6 +462,80 @@ width: 1.195vw;
 .no-scroll {
   overflow: hidden;
 }
+
+.fly {
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(3vw);
+  transition: transform 1s cubic-bezier(.18,.89,.32,1.28), opacity 2.5s ease;
+  pointer-events: none;
+}
+
+/* ЛОГО — слева */
+.fly-logo {
+  top: calc(50% - 16.7vw - 1vw); 
+  left: calc(50% - 25vw); 
+  width: 6vw;
+}
+
+/* ТЕКСТ — справа */
+.fly-text {
+  font-family: var(--montserrat);
+  top: calc(50% - 16.7vw - 1vw);
+  right: calc(50% - 25vw);
+  font-size: 2vw;
+  color: white;
+}
+
+/* Анимация «вылета» */
+.modalBox.playing .fly {
+  opacity: 1;
+  transform: translateY(-2vw);
+}
+
+.fly-extra1 ,
+.fly-extra2 {
+  background-color: #FFFFFF;
+  padding: 0.5vw;
+  border-radius: 0.563vw;
+  font-size: 0.125vw;
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  transition: transform 1s cubic-bezier(.18,.89,.32,1.28), opacity 4.5s ease;
+  pointer-events: none;
+}
+
+/* Позиция — в правом нижнем углу видео */
+.fly-extra1 {
+  bottom: calc(50% - 16.75vw);
+  right: calc(50% - 25vw);
+  font-size: 1.25vw;
+  color: #000000;
+    transform: translate(0vw, -1.5vw);  /* прячем под углом видео */
+}
+
+.fly-extra2 {
+  bottom: calc(50% - 20.15vw);
+  right: calc(50% - 18vw);
+  font-size: 1.25vw;
+  color: #000000;
+      transform: translate(3vw, -4.8vw);  /* прячем под углом видео */
+}
+
+/* Анимация вылета */
+.modalBox.playing .fly-extra1 {
+  opacity: 1;
+  transform: translateY(2.5vw); /* вылет вверх-влево */
+}
+
+.modalBox.playing .fly-extra2 {
+  opacity: 1;
+  transform: translate(3vw, -0.9vw); /* немного другое направление */
+}
+
+
 
 
 
@@ -1105,7 +1231,7 @@ display: block;
 }
 
 .right-static .logo-block img {
-  width: 18.813vw;
+  width: 20.6vw;
   height: auto;
 }
 
@@ -1124,7 +1250,7 @@ display: block;
   border-radius: 2vw; /* скругление углов */
   text-decoration: none; /* убираем подчёркивание ссылки */
   color: #2D2D2D; /* цвет текста */
-  width: 18.625vw; /* занимает всю доступную ширину */
+  width: 20.6vw; /* занимает всю доступную ширину */
   box-sizing: border-box; /* включаем отступы в ширину элемента */
   cursor: pointer; /* курсор "рука" при наведении */
   margin-left: 3vw;
@@ -1170,7 +1296,7 @@ display: block;
 }
 
 .wa-button {
-  width: 2.2vw;
+  width: 2.5vw;
 }
 
 .social-btn-1-2 {
@@ -1180,7 +1306,7 @@ display: block;
 }
 
 .tg-button {
-  width: 2.2vw;
+  width: 2.5vw;
 }
 
 .social-btn-1-3 {
@@ -1190,7 +1316,7 @@ display: block;
   text-decoration: none;
   font-family: var(--montserrat);
   color: #FFFFFF;
-  padding: 0.65vw 3.13vw;
+  padding: 0.75vw 3.8vw;
   background: #2D2D2D;
   border-radius: 1vw;
   font-size: 0.875vw;
@@ -1308,24 +1434,25 @@ display: block;
 }
 
 .action::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 0; 
-  height: 2px; 
-  background-color: #FFFFFF; 
-  transition: width 0.3s ease-in-out; 
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #FFFFFF;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.15, 0.85, 0.25, 1);
 }
 
 .action:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .bottom-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   padding: 0px;
   margin: 0;
@@ -1389,7 +1516,7 @@ display: block;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 1.375vw;
-  margin-bottom: 0.666vw;
+  margin-top: 0.666vw;
 }
 
 .telegram-link-2:hover {
