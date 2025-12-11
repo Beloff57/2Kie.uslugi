@@ -51,8 +51,13 @@
           <div class="serv-video">
               <img src="images/Rectangle 293.png" alt="" class="video-serv">
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video1.mp4">
+              <div class="video-hint">Нажмите, чтобы воспроизвести</div>
           </div>
           <div class="modalBox">
+              <img class="fly fly-logo" src="images/Group 19.png" alt="">
+  <div class="fly fly-text">О разработке</div>
+    <div class="fly fly-extra1">Тэг2</div>
+  <div class="fly fly-extra2">Тэг1</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -175,6 +180,10 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video2.mp4">
           </div>
           <div class="modalBox">
+              <img class="fly fly-logo" src="images/Group 19.png" alt="">
+  <div class="fly fly-text">О дизайне</div>
+    <div class="fly fly-extra1">Тэг2</div>
+  <div class="fly fly-extra2">Тэг1</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -308,6 +317,10 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video3.mp4">
           </div>
           <div class="modalBox">
+              <img class="fly fly-logo" src="images/Group 19.png" alt="">
+  <div class="fly fly-text">О моушене</div>
+    <div class="fly fly-extra1">Тэг2</div>
+  <div class="fly fly-extra2">Тэг1</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -925,27 +938,46 @@ window.addEventListener('scroll', () => {
 <script>
 $(document).ready(function() {
 
+  let savedScroll = 0; // сохраняем позицию скролла
+
+  // Открытие модалки и запуск видео
   $('.play-btn').click(function() {
 
     const modal = $(this).closest('.serv-video').next('.modalBox');
     const video = modal.find('video').get(0);
     const src = $(this).data('video');
 
+    // Сохраняем текущий скролл
+    savedScroll = window.scrollY;
+
+    // Фиксируем body без скачка
+    $('body')
+      .addClass('body-lock')
+      .css('top', `-${savedScroll}px`);
+
+    // Устанавливаем видео
     video.src = src;
     video.currentTime = 0;
     video.play();
 
-    $('body').addClass('no-scroll');
-
+    // Показываем модалку
     modal.removeClass('closing').addClass('show');
+
+    // Когда видео реально начинает играть — запускаем анимацию элементов
+    video.onplay = () => {
+      modal.addClass('playing');
+    };
   });
 
+
+  // Клик вне контейнера — закрытие
   $(document).on('click', '.modalBox', function(e) {
     if ($(e.target).closest('.modalBox-container').length === 0) {
       closeModal($(this));
     }
   });
 
+  // Закрытие по Esc
   $(document).keydown(function(e) {
     if (e.key === "Escape") {
       $('.modalBox.show').each(function() { closeModal($(this)); });
@@ -953,16 +985,21 @@ $(document).ready(function() {
   });
 
 
+  // Функция закрытия
   function closeModal(modal) {
     const video = modal.find('video').get(0);
 
-    $('body').removeClass('no-scroll');
+    // Возвращаем body в нормальное состояние
+    $('body').removeClass('body-lock').css('top', '');
+    window.scrollTo(0, savedScroll); // возвращаем скролл туда, где был
 
-    modal.find('.fly-logo, .fly-text').css('transition', '');
+    // Отключаем анимацию элементов
+    modal.removeClass('playing');
 
+    // Анимация закрытия модалки
     modal.addClass('closing').removeClass('show');
 
-    // Дождаться конца анимации (0.35s)
+    // Ждём завершения анимации
     setTimeout(() => {
       video.pause();
       video.src = "";
@@ -970,6 +1007,43 @@ $(document).ready(function() {
     }, 350);
   }
 
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hint = document.querySelector('.video-hint');
+  const playBtn = document.querySelector('.play-btn');
+  let hintShown = false;
+
+  // Функция плавного скрытия
+  function fadeOutHint() {
+    hint.classList.add('hide'); // запускаем исчезновение
+
+    // Ждём окончания transition opacity
+    const onTransitionEnd = (event) => {
+      if (event.propertyName === 'opacity') {
+        hint.classList.remove('pulse'); // отключаем пульсацию ПОСЛЕ fade-out
+        hint.removeEventListener('transitionend', onTransitionEnd);
+      }
+    };
+
+    hint.addEventListener('transitionend', onTransitionEnd);
+  }
+
+  // Показ через 2 сек.
+  setTimeout(() => {
+    if (!hintShown) {
+      hint.classList.add('show');
+      hint.classList.add('pulse'); // включаем пульсацию
+      hintShown = true;
+
+      // Авто-скрытие через 3 сек
+      setTimeout(fadeOutHint, 3000);
+    }
+  }, 2000);
+
+  // Скрытие при нажатии play
+  playBtn.addEventListener('click', fadeOutHint);
 });
 </script>
 </body>
