@@ -54,10 +54,11 @@
               <div class="video-hint">Нажмите, чтобы воспроизвести</div>
           </div>
           <div class="modalBox">
-              <img class="fly fly-logo" src="images/Group 19.png" alt="">
-  <div class="fly fly-text">О разработке</div>
-    <div class="fly fly-extra1">Тэг2</div>
-  <div class="fly fly-extra2">Тэг1</div>
+              <img class="fly fly-logo" src="images/Group 23.svg" alt="">
+  <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
+    <div class="fly fly-extra1"># Разработка</div>
+    <div class="fly fly-extra2">#UX/UI</div>
+    <div class="fly fly-extra3"># Автоматизация</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -180,10 +181,11 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video2.mp4">
           </div>
           <div class="modalBox">
-              <img class="fly fly-logo" src="images/Group 19.png" alt="">
-  <div class="fly fly-text">О дизайне</div>
-    <div class="fly fly-extra1">Тэг2</div>
-  <div class="fly fly-extra2">Тэг1</div>
+              <img class="fly fly-logo" src="images/Group 23.svg" alt="">
+  <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
+    <div class="fly fly-extra1"># Разработка</div>
+    <div class="fly fly-extra2">#UX/UI</div>
+    <div class="fly fly-extra3"># Автоматизация</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -317,10 +319,11 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video3.mp4">
           </div>
           <div class="modalBox">
-              <img class="fly fly-logo" src="images/Group 19.png" alt="">
-  <div class="fly fly-text">О моушене</div>
-    <div class="fly fly-extra1">Тэг2</div>
-  <div class="fly fly-extra2">Тэг1</div>
+              <img class="fly fly-logo" src="images/Group 23.svg" alt="">
+  <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
+    <div class="fly fly-extra1"># Разработка</div>
+    <div class="fly fly-extra2">#UX/UI</div>
+    <div class="fly fly-extra3"># Автоматизация</div>
             <div class="modalBox-container">
               <video width="100%" height="auto" controls loop autoplay></video>
             </div>
@@ -387,7 +390,7 @@
         </section>
     </div>
     <div class="right-static">
-  <div class="nav-wrapper fade-on-scroll">
+  <div class="nav-wrapper fade-on-scroll" data-fade="0.35">
     <div class="vertical-links">
       <a href="/cases" class="nav-link">Кейсы</a>
       <a href="/uslugi.html" class="nav-link">Услуги</a>
@@ -395,16 +398,16 @@
     </div>
     <a href="" class="telegram-link">tg: @studio</a>
   </div>
-    <div class="logo-block fade-on-scroll">
+    <div class="logo-block fade-on-scroll" data-fade="0.40">
         <img src="images/Group 17.svg" alt="2kie Digital Agency">
     </div>
-       <a href="#" class="price-mot-3 fade-on-scroll">
+       <a href="#" class="price-mot-3 fade-on-scroll" data-fade="0.35">
           Обсудить проект
           <div class="icon-wrap-2">
           <img src="images/Arrow 51.svg" class="arrow-icon-2" alt="">
           </div>
       </a>
-        <div class="contact-block fade-on-scroll">
+        <div class="contact-block fade-on-scroll" data-fade="0.35">
             <div class="social-buttons">
             <a href="" class="social-btn">
               <img src="images/WA-Vector.svg" alt="" class="wa-button">
@@ -905,23 +908,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 const fadeBlocks = document.querySelectorAll('.fade-on-scroll');
 
-// Процент расстояния от низа страницы, в пределах которого элементы исчезают
-const fadePercent = 0.32; // например: исчезают в нижних 15% страницы
-
 window.addEventListener('scroll', () => {
   const docHeight = document.documentElement.scrollHeight;
 
   fadeBlocks.forEach(block => {
-    // Позиция верхней точки элемента относительно страницы
-    const elementTopOnPage = window.scrollY + block.getBoundingClientRect().top;
 
-    // Расстояние от элемента до низа страницы
+    // Берём индивидуальный процент или ставим дефолт 0.32
+    const fadePercent = parseFloat(block.dataset.fade) || 0.32;
+
+    const elementTopOnPage = window.scrollY + block.getBoundingClientRect().top;
     const distanceToBottom = docHeight - elementTopOnPage;
 
-    // Порог исчезновения в пикселях
     const fadeThreshold = docHeight * fadePercent;
 
-    // Проверяем
     if (distanceToBottom <= fadeThreshold) {
       block.style.opacity = '0';
       block.style.pointerEvents = 'none';
@@ -964,9 +963,11 @@ $(document).ready(function() {
     modal.removeClass('closing').addClass('show');
 
     // Когда видео реально начинает играть — запускаем анимацию элементов
-    video.onplay = () => {
-      modal.addClass('playing');
-    };
+video.onplay = () => {
+  setTimeout(() => {
+    modal.addClass('playing');
+  }, 700); // задержка в мс
+};
   });
 
 
@@ -986,26 +987,34 @@ $(document).ready(function() {
 
 
   // Функция закрытия
-  function closeModal(modal) {
-    const video = modal.find('video').get(0);
+ function closeModal(modal) {
+  const video = modal.find('video').get(0);
 
-    // Возвращаем body в нормальное состояние
-    $('body').removeClass('body-lock').css('top', '');
-    window.scrollTo(0, savedScroll); // возвращаем скролл туда, где был
+  // Возвращаем body в нормальное состояние
+  $('body').removeClass('body-lock').css('top', '');
+  window.scrollTo(0, savedScroll);
 
-    // Отключаем анимацию элементов
-    modal.removeClass('playing');
+  // 1) Убираем "playing" — элементы начинают исчезать (2.5s)
+  modal.removeClass('playing');
 
-    // Анимация закрытия модалки
+  // Новое время исчезновения элементов — 2.5 секунды
+  const elementsFadeDuration = 1000;
+
+  // 2) Ждём, пока элементы исчезнут
+  setTimeout(() => {
+
+    // Запускаем анимацию закрытия модалки
     modal.addClass('closing').removeClass('show');
 
-    // Ждём завершения анимации
+    // Ждём завершения закрытия контейнера (0.35s)
     setTimeout(() => {
       video.pause();
       video.src = "";
       modal.removeClass('closing');
     }, 350);
-  }
+
+  }, elementsFadeDuration);
+}
 
 });
 </script>
@@ -1040,7 +1049,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Авто-скрытие через 3 сек
       setTimeout(fadeOutHint, 3000);
     }
-  }, 2000);
+  }, 1000);
 
   // Скрытие при нажатии play
   playBtn.addEventListener('click', fadeOutHint);
