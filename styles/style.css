@@ -407,16 +407,6 @@ width: 1.195vw;
 
 }
 
-.video-hint.pulse {
-  animation: pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%   { transform: translate(11vw, 0vw) scale(1); }
-  50%  { transform: translate(11vw, 0vw) scale(1.05); }
-  100% { transform: translate(11vw, 0vw) scale(1); }
-}
-
 .modalBox {
   position: fixed;
   inset: 0;
@@ -438,10 +428,11 @@ width: 1.195vw;
   border-radius: 14px;
   overflow: hidden;
   width: 50%;
-  height: 33.5vw;
+  height: 33.3vw;
   transform: scale(0.7);
   opacity: 0;
   transition: transform .35s cubic-bezier(.18,.89,.32,1.28), opacity .35s ease;
+  z-index: 9999;
 }
 
 .modalBox.show {
@@ -474,17 +465,18 @@ width: 1.195vw;
 
 /* ЛОГО — слева */
 .fly-logo {
-  top: calc(50% - 16.7vw - 1vw); 
-  left: calc(50% - 25vw); 
+  top: calc(50% - 17.2vw - 1vw); 
+  left: calc(50% - 24.5vw); 
   width: 6vw;
 }
 
 /* ТЕКСТ — справа */
 .fly-text {
+  width: 18vw;
   font-family: var(--montserrat);
   top: calc(50% - 16.7vw - 1vw);
-  right: calc(50% - 25vw);
-  font-size: 2vw;
+  right: calc(50% - 1vw);
+  font-size: 0.813vw;
   color: white;
 }
 
@@ -495,44 +487,59 @@ width: 1.195vw;
 }
 
 .fly-extra1 ,
-.fly-extra2 {
-  background-color: #FFFFFF;
-  padding: 0.5vw;
+.fly-extra2,
+.fly-extra3 {
   border-radius: 0.563vw;
   font-size: 0.125vw;
   position: absolute;
   z-index: 5;
   opacity: 0;
-  transition: transform 1s cubic-bezier(.18,.89,.32,1.28), opacity 4.5s ease;
+  transition: transform 1s cubic-bezier(.18,.89,.32,1.28), opacity 2.5s ease;
   pointer-events: none;
+  font-family: var(--montserrat);
+  line-height: 114.2%;
+  letter-spacing: -4%;
+  font-weight: 400;
 }
 
-/* Позиция — в правом нижнем углу видео */
 .fly-extra1 {
   bottom: calc(50% - 16.75vw);
   right: calc(50% - 25vw);
-  font-size: 1.25vw;
-  color: #000000;
-    transform: translate(0vw, -1.5vw);  /* прячем под углом видео */
+  font-size: 0.813vw;
+  color: #FFFFFF;
+    transform: translate(-0.2vw, -1.5vw);  /* прячем под углом видео */
 }
 
 .fly-extra2 {
   bottom: calc(50% - 20.15vw);
   right: calc(50% - 18vw);
-  font-size: 1.25vw;
-  color: #000000;
-      transform: translate(3vw, -4.8vw);  /* прячем под углом видео */
+  font-size: 0.813vw;
+  color: #FFFFFF;
+      transform: translate(0vw, -5vw);  /* прячем под углом видео */
+}
+
+.fly-extra3 {
+  bottom: calc(50% - 16.75vw);
+  right: calc(50% - 25vw);
+  font-size: 0.813vw;
+  color: #FFFFFF;
+    transform: translate(-11vw, -1.5vw);  /* прячем под углом видео */
 }
 
 /* Анимация вылета */
 .modalBox.playing .fly-extra1 {
   opacity: 1;
-  transform: translateY(2.5vw); /* вылет вверх-влево */
+  transform: translate(-0.2vw, 1.5vw); /* вылет вверх-влево */
 }
 
 .modalBox.playing .fly-extra2 {
   opacity: 1;
-  transform: translate(3vw, -0.9vw); /* немного другое направление */
+  transform: translate(0vw, -1.95vw); /* немного другое направление */
+}
+
+.modalBox.playing .fly-extra3 {
+  opacity: 1;
+  transform: translate(-11vw, 1.49vw); /* вылет вверх-влево */
 }
 
 
@@ -916,14 +923,14 @@ display: block;
 }
 
 .zag-bl3 h3 {
-    width: 16vw;
+    width: 10.05vw;
     font-family: var(--montserrat);
     font-size: 1.25vw;
     color: #2D2D2D;
     font-weight: 500;
     line-height: 113.9%;
     letter-spacing: -4%;
-    margin-right: 2.9vw;
+    margin-right: 9vw;
 }
 
 .zag-bl3 p {
@@ -937,7 +944,7 @@ display: block;
     width: 6vw;
     text-align: left;
     white-space: nowrap;
-    margin-right: 41.9vw;
+    margin-right: 41.75vw;
 }
 
 .zag-bl3 img {
