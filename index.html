@@ -54,6 +54,9 @@
               <div class="video-hint">Нажмите, чтобы воспроизвести</div>
           </div>
           <div class="modalBox">
+              <button class="modal-close" aria-label="Закрыть">
+               <img src="images/krestik.svg" alt="Закрыть">
+              </button>
               <img class="fly fly-logo" src="images/Group 23.svg" alt="">
   <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
     <div class="fly fly-extra1"># Разработка</div>
@@ -181,6 +184,9 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video2.mp4">
           </div>
           <div class="modalBox">
+              <button class="modal-close" aria-label="Закрыть">
+               <img src="images/krestik.svg" alt="Закрыть">
+              </button>
               <img class="fly fly-logo" src="images/Group 23.svg" alt="">
   <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
     <div class="fly fly-extra1"># Разработка</div>
@@ -319,6 +325,9 @@
               <img src="images/Page-1.svg" alt="Play" class="play-btn" data-video="video/video3.mp4">
           </div>
           <div class="modalBox">
+              <button class="modal-close" aria-label="Закрыть">
+               <img src="images/krestik.svg" alt="Закрыть">
+              </button>
               <img class="fly fly-logo" src="images/Group 23.svg" alt="">
   <div class="fly fly-text">Дизайн и разработка цифровых сервисов, сайтов и приложений с нуля.</div>
     <div class="fly fly-extra1"># Разработка</div>
@@ -984,6 +993,12 @@ video.onplay = () => {
       $('.modalBox.show').each(function() { closeModal($(this)); });
     }
   });
+
+  $(document).on('click', '.modal-close', function(e) {
+  e.stopPropagation(); // чтобы не сработал клик по подложке
+  const modal = $(this).closest('.modalBox');
+  closeModal(modal);
+});
 
 
   // Функция закрытия
