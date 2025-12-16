@@ -8,6 +8,29 @@
  
 </head>
 <body>
+  <div class="circle-btn">
+  <div class="circle-center">
+    <img src="images/Arrow 27.svg" alt="">
+  </div>
+
+  <svg class="circle-text" viewBox="0 0 200 200">
+    <defs>
+      <path
+        id="textCircle"
+        d="M100,100 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0"
+      />
+    </defs>
+
+    <text>
+      <textPath href="#textCircle" 
+      textLength="471"
+      lengthAdjust="spacing"
+      startOffset="0">
+      &nbsp;обсудить проект • обсудить проект •
+      </textPath>
+    </text>
+  </svg>
+</div>
     <div class="page-wrapper">
     <div class="left-scrollable">
       <section class="hero-content">
@@ -1069,6 +1092,106 @@ document.addEventListener("DOMContentLoaded", () => {
   // Скрытие при нажатии play
   playBtn.addEventListener('click', fadeOutHint);
 });
+</script>
+<script>
+const circleText = document.querySelector('.circle-text');
+const circleBtn  = document.querySelector('.circle-btn');
+
+let lastScrollY = window.scrollY;
+let rotation = 0;
+let velocity = 0;
+
+// -----------------
+// НАСТРОЙКИ
+// -----------------
+const SCROLL_POWER = 0.02;   // влияние скролла
+const FRICTION = 0.9;       // мягкая инерция
+const HOVER_SHIFT = 70;      // насколько прокрутить при hover (градусы)
+const HOVER_EASE = 0.08;     // плавность наведения
+
+let hoverOffset = 0;
+let targetHoverOffset = 0;
+
+// -----------------
+// СКРОЛЛ
+// -----------------
+function onScroll() {
+  const currentY = window.scrollY;
+  const delta = currentY - lastScrollY;
+
+  velocity += delta * SCROLL_POWER;
+  lastScrollY = currentY;
+}
+
+// -----------------
+// HOVER
+// -----------------
+circleBtn.addEventListener('mouseenter', () => {
+  targetHoverOffset = HOVER_SHIFT;
+});
+
+circleBtn.addEventListener('mouseleave', () => {
+  targetHoverOffset = 0;
+});
+
+// -----------------
+// АНИМАЦИЯ
+// -----------------
+function animate() {
+  // основное вращение от скролла
+  rotation += velocity;
+  velocity *= FRICTION;
+
+  if (Math.abs(velocity) < 0.001) velocity = 0;
+
+  // плавный hover-сдвиг
+  hoverOffset += (targetHoverOffset - hoverOffset) * HOVER_EASE;
+
+  // итоговое вращение
+  const finalRotation = rotation + hoverOffset;
+  circleText.style.transform = `rotate(${finalRotation}deg)`;
+
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('scroll', onScroll);
+requestAnimationFrame(animate);
+</script>
+<script>
+const circleBtn2 = document.querySelector('.circle-btn');
+
+// -----------------
+// НАСТРОЙКИ В VW
+// -----------------
+const STOP_OFFSET_VW = 3;  // на сколько vw выше низа страницы кнопка остановится
+
+function vwToPx(vw) {
+  return (vw / 100) * window.innerWidth;
+}
+
+function updateButtonPosition() {
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const docH = document.documentElement.scrollHeight;
+
+  const stopOffsetPx = vwToPx(STOP_OFFSET_VW);
+  const distanceToBottom = docH - (scrollY + windowH);
+
+  if (distanceToBottom < stopOffsetPx) {
+    const lift = stopOffsetPx - distanceToBottom;
+    circleBtn2.style.transform = `translateY(-${lift}px)`;
+  } else {
+    circleBtn2.style.transform = `translateY(0)`;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  requestAnimationFrame(updateButtonPosition);
+});
+
+window.addEventListener('resize', updateButtonPosition);
+
+updateButtonPosition();
 </script>
 </body>
 </html>
