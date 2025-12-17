@@ -261,11 +261,42 @@ body {
 }
 
 .icon-part {
+  width: 0.563vw;
   display: flex;
   background: #2D2D2D;
   border-radius: 50%;
   padding: 0.2vw 0.5vw;
   margin-right: 0.2vw;
+}
+
+.icon-part .arrow-tw {
+  position: absolute;
+  width: 0.625vw;
+  height: 0.625vw;
+
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.icon-part .arrow-1tw {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.icon-part .arrow-2tw {
+  transform: translate(-120%, 120%);
+  opacity: 0;
+}
+
+.merge-btn-container:hover .icon-part .arrow-1tw {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.merge-btn-container:hover .icon-part .arrow-2tw {
+  transform: translate(0, 0);
+  opacity: 1;
 }
 
 .text-part {
@@ -668,6 +699,7 @@ width: 1.195vw;
 }
 
 .card-header {
+  overflow: hidden;
   display: flex;
   align-items: center;
   color: white;
@@ -795,15 +827,48 @@ display: flex;
 }
 
 .icon-wrap {
+  width: 1.6vw;
+  height: 1.6vw;
+  position: relative;
+  overflow: hidden;
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  padding:0.563vw;            
+  justify-content:center;          
   box-sizing:border-box;    
   background:#2D2D2D;
   border:1px solid #E3E3E9;
   border-radius:50%;
   margin-right: 0.625vw;
+}
+
+.icon-wrap .arrow-icon-21 {
+  position: absolute;
+  width: 0.625vw;
+  height: auto;
+
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.icon-wrap .arrow-1 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.icon-wrap .arrow-2 {
+  transform: translate(-120%, 120%);
+  opacity: 0;
+}
+
+.card-header:hover .icon-wrap .arrow-1 {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.card-header:hover .icon-wrap .arrow-2 {
+  transform: translate(0, 0);
+  opacity: 1;
 }
 
 .card-header:hover .icon-wrap {
@@ -937,22 +1002,100 @@ display: block;
   margin-right: 2.1vw;
 }
 
-.zag-bl2-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5vw;
-    box-sizing: border-box;
-    background: #F6F6F8;
-    border: 1px solid #2D2D2D;
-    border-radius: 50%;
-    margin-right: 2vw;
+.zag-action {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
 }
 
-.zag-bl2 img {
-    display: block;
-    width: 0.5vw;
-    height: auto;
+.zag-bl2-wrap {
+  width: 1.6vw;
+  height: 1.6vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5vw;
+  box-sizing: border-box;
+  background: #F6F6F8;
+  border: 1px solid #2D2D2D;
+  border-radius: 50%;
+  margin-right: 2vw;
+  z-index: 2;
+  position: relative;
+   overflow: hidden;
+}
+
+.zag-bl2-wrap .arrow {
+  position: absolute;
+  width: 0.5vw;
+  height: auto;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.arrow-1 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.arrow-2 {
+  transform: translate(-120%, 120%);
+  opacity: 0;
+}
+
+.card-2:hover .zag-action .arrow-1 {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.card-2:hover .zag-action .arrow-2 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.card-3:hover .zag-action .arrow-1 {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.card-3:hover .zag-action .arrow-2 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.zag-text-wrap {
+  display: inline-flex;
+  position: absolute;
+  right: calc(100% - 0.8vw); 
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.zag-text {
+  height: 1.6vw;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.25vw 1.7vw 0.25vw 0.7vw;
+  background: #F6F6F8;
+  border: 1px solid #2D2D2D;
+  border-radius: 2vw 0 0 2vw;
+  font-family: var(--montserrat);
+  font-size: 0.875vw;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 114.2%;
+  color: #2D2D2D;
+  transform: translateX(100%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-2:hover .zag-action .zag-text {
+  transform: translateX(0);
+}
+
+.card-3:hover .zag-action .zag-text {
+  transform: translateX(0);
 }
 
 .desc-bl2 {
@@ -1685,11 +1828,11 @@ display: block;
 }
 
 .contact-block {
-  opacity: 0;
+  display: none;
 }
 
 .price-mot-3 {
-  opacity: 0;
+  display: none;
 }
 
 .left-scrollable {
@@ -1864,7 +2007,7 @@ display: block;
 
 .cases-serv {
   transform:translate(-20vw, 4vw);
-  width: 34vw;
+  width: 38vw;
   font-family: var(--montserrat);
   font-size: 3.182vw;
   line-height: 113.9%;
@@ -1882,7 +2025,7 @@ display: block;
 
 .serv-kol {
   transform: translate(-4vw, -3.5vw);
-  margin-left: 4.75vw;
+  margin-left: 0vw;
   padding-right: 1.135vw;
   font-family: var(--montserrat);
   font-size: 3.636vw; 
@@ -2197,7 +2340,7 @@ display: block;
   font-weight: 500;
   line-height: 113.9%;
   letter-spacing: -4%;
-  margin-right: -3.2vw;
+  margin-right: -2.7vw;
 }
 
 .zag-bl2 p {
@@ -2209,17 +2352,17 @@ display: block;
   letter-spacing: -4%;
   color: #2D2D2D;
   display: inline-block;   
-  width: 6vw;             
+  width: 23vw;             
   text-align: left;        
   white-space: nowrap;
-  margin-right: 27.1vw;
+  margin-right: 10vw;
 }
 
 .zag-bl2-wrap {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.48vw;
+    padding: 2.62vw;
     box-sizing: border-box;
     background: #F6F6F8;
     border: 1px solid #2D2D2D;
@@ -2227,10 +2370,13 @@ display: block;
     margin-right: 3vw;
 }
 
-.zag-bl2 img {
-    display: block;
-    width: 2.273vw;
-    height: auto;
+.zag-bl2-wrap .arrow {
+  position: absolute;
+  width: 2.273vw;
+  height: auto;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
 }
 
 .desc-bl2 {
@@ -2602,4 +2748,69 @@ display: block;
   padding: 2.045vw 6.818vw;
   border-radius: 3.182vw;
 }
+}
+
+.cta-slide {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 3.2vw;
+  cursor: pointer;
+}
+
+/* ---------- МАСКА ---------- */
+.cta-mask {
+  position: absolute;
+  right: 1.6vw;          /* место под круг */
+  height: 100%;
+  overflow: hidden;     /* 🔥 КЛЮЧЕВОЕ */
+  pointer-events: none; /* чтобы hover не ломался */
+}
+
+/* ---------- ТЕКСТ ---------- */
+.cta-text {
+  display: inline-block;
+  white-space: nowrap;
+
+  padding: 0.6vw 1.2vw 0.6vw 1.4vw;
+  font-family: var(--montserrat);
+  font-size: 1vw;
+  color: #2D2D2D;
+
+  background: #FFFFFF;
+  border: 1px solid #2D2D2D;
+  border-radius: 2vw;
+
+  transform: translateX(100%);
+  opacity: 0;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+}
+
+/* ---------- КРУГ ---------- */
+.cta-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 3.2vw;
+  height: 3.2vw;
+  border-radius: 50%;
+  border: 1px solid #2D2D2D;
+  background: #FFFFFF;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-icon img {
+  width: 1.2vw;
+}
+
+/* ---------- HOVER ---------- */
+.cta-slide:hover .cta-text {
+  transform: translateX(0);
+  opacity: 1;
 }
