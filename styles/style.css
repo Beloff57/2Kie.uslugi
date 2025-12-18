@@ -2219,7 +2219,7 @@ display: flex;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:1.48vw;            
+  padding:2.62vw;            
   box-sizing:border-box;    
   background:#2D2D2D;
   border:1px solid #FFFFFF;
@@ -2231,12 +2231,15 @@ display: flex;
   background-color: #000000;
 }
 
-.icon-wrap .arrow-icon-2{
-  display:block;
-  width:2.273vw;               
-  height:auto;
-}
+.icon-wrap .arrow-icon-21 {
+  position: absolute;
+  width: 2.273vw;
+  height: auto;
 
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
 .card-content {
   display: flex;
   flex-direction: column;
@@ -2358,16 +2361,27 @@ display: block;
   margin-right: 10vw;
 }
 
+.zag-action {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
 .zag-bl2-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2.62vw;
-    box-sizing: border-box;
-    background: #F6F6F8;
-    border: 1px solid #2D2D2D;
-    border-radius: 50%;
-    margin-right: 3vw;
+  width: 2.62vw;
+  height: 2.62vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.62vw;
+  box-sizing: border-box;
+  background: #F6F6F8;
+  border: 1px solid #2D2D2D;
+  border-radius: 50%;
+  margin-right: 2vw;
+  z-index: 2;
+  position: relative;
+   overflow: hidden;
 }
 
 .zag-bl2-wrap .arrow {
@@ -2377,6 +2391,70 @@ display: block;
   transition:
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.3s ease;
+}
+
+.arrow-1 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.arrow-2 {
+  transform: translate(-120%, 120%);
+  opacity: 0;
+}
+
+.card-2:hover .zag-action .arrow-1 {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.card-2:hover .zag-action .arrow-2 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.card-3:hover .zag-action .arrow-1 {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.card-3:hover .zag-action .arrow-2 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.zag-text-wrap {
+  display: inline-flex;
+  position: absolute;
+  right: calc(100% - 2.3vw); 
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.zag-text {
+  height: 5.6vw;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 1.3vw 3.7vw 1vw 2vw;
+  background: #F6F6F8;
+  border: 1px solid #2D2D2D;
+  border-radius: 3vw 0 0 3vw;
+  font-family: var(--montserrat);
+  font-size: 2.4vw;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 114.2%;
+  color: #2D2D2D;
+  transform: translateX(100%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-2:hover .zag-action .zag-text {
+  transform: translateX(0);
+}
+
+.card-3:hover .zag-action .zag-text {
+  transform: translateX(0);
 }
 
 .desc-bl2 {
